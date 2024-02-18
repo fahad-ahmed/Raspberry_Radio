@@ -1,0 +1,11 @@
+set("init.allow_root", true)
+set("init.daemon",false)
+set("log.level", 4)
+set("init.daemon.pidfile",false)
+set("log.file.path","/home/fahad/liquidsoap/liquidsoap.log")
+set("log.file.perms",755)
+set("log.unix_timestamps",true)
+mic = input.alsa(device="hw:1,0")
+mic  = amplify(20.0, mic)
+output.shoutcast(%mp3(bitrate=256,samplerate=44100,stereo=false),name="New Radio",genre="GENRE",host="192.168.0.39",port = 8000,password = "s1sourcep",mic)
+

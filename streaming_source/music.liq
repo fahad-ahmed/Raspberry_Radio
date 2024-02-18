@@ -1,0 +1,12 @@
+set("init.allow_root", true)
+set("init.daemon",false)
+set("log.level", 4)
+set("init.daemon.pidfile",false)
+set("log.file.path","/home/fahad/liquidsoap/liquidsoap.log")
+set("log.file.perms",755)
+set("log.unix_timestamps",true)
+music = playlist("/home/fahad/liquidsoap/playlist.txt")
+emergency = single("/home/fahad/liquidsoap/sample.mp3")
+outstream = fallback(track_sensitive=false,[music,emergency])
+output.shoutcast(%mp3(bitrate=256,samplerate=44100,stereo=false),name="New Radio",genre="GENRE",host="192.168.0.39",port = 8000,password = "s1sourcep",outstream)
+
